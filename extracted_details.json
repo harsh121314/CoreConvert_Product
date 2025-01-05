@@ -1,140 +1,58 @@
 {
-    "file_name": "WellsFargo2.pdf",
+    "file_name": "pdf_files/WellsFargo1.pdf",
     "account": {
         "firstname": "ESWARAPRAD",
         "middlename": "V",
         "lastname": "DONTU",
         "addressline1": "6375 READ RD",
         "addressline2": "SUWANEE GA 30024-4573",
-        "paymentduedate": "2024-06-11",
-        "amountoftotaldue": "0.00",
-        "currentbalance": "0.00",
-        "laststatementdate": "2024-05-17",
-        "laststmtbalance": "162.09",
-        "amountofpaymentctd": "766.68",
+        "paymentduedate": "12/11/2024",
+        "amountoftotaldue": "25.00",
+        "currentbalance": "94.43",
+        "laststatementdate": "11/15/2024",
+        "laststmtbalance": "0.00",
+        "amountofpaymentctd": "0.00",
         "amountofothercreditctd": "0.00",
         "amountofcashadvctd": "0.00",
-        "amountofpurchasectd": "604.59",
+        "amountofpurchasectd": "94.43",
         "amountfeechargesctd": "0.00",
         "amountofinterestctd": "0.00",
         "creditlimit": "21000.00",
-        "opentobuy": "21000.00"
+        "opentobuy": "20905.00",
+        "billingcycle": "17"
     },
     "transactions": [
         {
-            "traneffectivedate": "2024-04-19",
-            "tranpostdate": "2024-04-19",
-            "tranreferencenumber": "7407221FY0XSL65QX",
-            "cardacceptornamelocation": "ONLINE PAYMENT THANK YOU",
-            "amount": -213.09
-        },
-        {
-            "traneffectivedate": "2024-04-30",
-            "tranpostdate": "2024-04-30",
-            "tranreferencenumber": "7407221G90XSL9HBR",
-            "cardacceptornamelocation": "ONLINE PAYMENT THANK YOU",
-            "amount": -238.88
-        },
-        {
-            "traneffectivedate": "2024-05-09",
-            "tranpostdate": "2024-05-09",
-            "tranreferencenumber": "7407221GJ0XSLQ85D",
-            "cardacceptornamelocation": "ONLINE PAYMENT THANK YOU",
-            "amount": -50.0
-        },
-        {
-            "traneffectivedate": "2024-05-13",
-            "tranpostdate": "2024-05-13",
-            "tranreferencenumber": "7407221GN0XSLDF4W",
-            "cardacceptornamelocation": "ONLINE PAYMENT THANK YOU",
-            "amount": -66.0
-        },
-        {
-            "traneffectivedate": "2024-05-15",
-            "tranpostdate": "2024-05-15",
-            "tranreferencenumber": "7407221GT0XSLED08",
-            "cardacceptornamelocation": "ONLINE PAYMENT THANK YOU",
-            "amount": -198.71
-        },
-        {
             "cardlast4": "8450",
-            "traneffectivedate": "2024-04-16",
-            "tranpostdate": "2024-04-17",
-            "tranreferencenumber": "2401134FV001RJ3M2",
-            "cardacceptornamelocation": "SP SAI TEMPLE - NASSTA 678-6284217 GA",
-            "amount": 51.0
-        },
-        {
-            "cardlast4": "8450",
-            "traneffectivedate": "2024-04-25",
-            "tranpostdate": "2024-04-25",
-            "tranreferencenumber": "2412259G50VYMKZZT",
-            "cardacceptornamelocation": "MARUTHI FOODS LLC CUMMING GA",
-            "amount": 39.06
-        },
-        {
-            "cardlast4": "8450",
-            "traneffectivedate": "2024-04-25",
-            "tranpostdate": "2024-04-25",
-            "tranreferencenumber": "2413746G50144VY7J",
-            "cardacceptornamelocation": "PUBLIX #1227 SUWANEE GA",
-            "amount": 135.43
-        },
-        {
-            "cardlast4": "8450",
-            "traneffectivedate": "2024-04-26",
-            "tranpostdate": "2024-04-26",
-            "tranreferencenumber": "2413746G6015AF8P3",
-            "cardacceptornamelocation": "CVS/PHARMACY #02279 SUWANEE GA",
-            "amount": 12.39
-        },
-        {
-            "cardlast4": "8450",
-            "traneffectivedate": "2024-04-28",
-            "tranpostdate": "2024-04-28",
-            "tranreferencenumber": "2401134G7001GB8GX",
-            "cardacceptornamelocation": "SP SAI TEMPLE - NASSTA 678-6284217 GA",
-            "amount": 52.0
-        },
-        {
-            "cardlast4": "8450",
-            "traneffectivedate": "2024-05-03",
-            "tranpostdate": "2024-05-03",
-            "tranreferencenumber": "2469216GD33VXW28S",
-            "cardacceptornamelocation": "SQ *LAKSHMI NARSIMHA CULT Suwanee GA",
-            "amount": 111.0
-        },
-        {
-            "cardlast4": "8450",
-            "traneffectivedate": "2024-05-10",
-            "tranpostdate": "2024-05-10",
-            "tranreferencenumber": "2469216GL2ZXKZ3HE",
+            "traneffectivedate": "2024-10-17",
+            "tranpostdate": "2024-10-18",
+            "tranreferencenumber": "2469216ML2Y6EBS7Q",
             "cardacceptornamelocation": "SQ *SREE DEVI PEETHAM INC SUWANEE GA",
             "amount": 5.0
         },
         {
             "cardlast4": "8450",
-            "traneffectivedate": "2024-05-13",
-            "tranpostdate": "2024-05-13",
-            "tranreferencenumber": "2405522GPBLKDSPQQ",
-            "cardacceptornamelocation": "A2Z HALAL FRESH MEATS SUWANEE GA",
-            "amount": 26.01
+            "traneffectivedate": "2024-10-18",
+            "tranpostdate": "2024-10-18",
+            "tranreferencenumber": "2400077ML000K0NT1",
+            "cardacceptornamelocation": "GITHUB, INC. HTTPSGITHUB.C CA",
+            "amount": 10.0
         },
         {
             "cardlast4": "8450",
-            "traneffectivedate": "2024-05-13",
-            "tranpostdate": "2024-05-13",
-            "tranreferencenumber": "2413746GPHEZE9L39",
-            "cardacceptornamelocation": "PATEL BROTHERS SUWANEE GA",
-            "amount": 157.72
+            "traneffectivedate": "2024-10-22",
+            "tranpostdate": "2024-10-22",
+            "tranreferencenumber": "2469216MR2Z4PAKDJ",
+            "cardacceptornamelocation": "AMZN Digital*YP0AD0YA3 888-802-3080 WA",
+            "amount": 19.43
         },
         {
             "cardlast4": "8450",
-            "traneffectivedate": "2024-05-13",
-            "tranpostdate": "2024-05-13",
-            "tranreferencenumber": "2427539GNS66JANQN",
-            "cardacceptornamelocation": "VIVEK FLOWERS SUWANEE SUWANEE GA",
-            "amount": 14.98
+            "traneffectivedate": "2024-11-04",
+            "tranpostdate": "2024-11-04",
+            "tranreferencenumber": "2413746N58R0LP7EK",
+            "cardacceptornamelocation": "PT *N GA DIAB AND ENDO ATLANTA GA",
+            "amount": 60.0
         }
     ],
     "plan": [
@@ -142,15 +60,15 @@
             "plantype": "PURCHASES",
             "apr": 12.85,
             "totalbsfc": 0.0,
-            "daysincycle": 31,
+            "daysincycle": 29,
             "interestbnp": 0.0,
-            "planbalance": 0.0
+            "planbalance": 94.43
         },
         {
             "plantype": "CASH ADVANCES",
             "apr": 20.99,
             "totalbsfc": 0.0,
-            "daysincycle": 31,
+            "daysincycle": 29,
             "interestbnp": 0.0,
             "planbalance": 0.0
         }

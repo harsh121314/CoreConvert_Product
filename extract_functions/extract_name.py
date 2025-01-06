@@ -1,7 +1,6 @@
 import pdfplumber
 import re
 
-
 def extract_name_and_address_from_pdf(pdf_path, debug=False):
     try:
         with pdfplumber.open(pdf_path) as pdf:
@@ -20,11 +19,8 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
 
             cropped_text = page.within_bbox(bottom_left_bbox).extract_text()
 
-            if debug:
-                print("\n--- Cropped Text from Bottom-Left Corner ---\n")
-                print(cropped_text)
-
             if not cropped_text:
+                print("No text found in the bottom-left corner.")
                 return extracted_details
 
             lines = cropped_text.split("\n")
@@ -46,20 +42,10 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
                     address_lines.append(line)
 
             if address_lines:
-                if len(address_lines) >= 2:
-                    extracted_details["addressline1"] = address_lines[0]
-                    formatted_address = address_lines[1].replace(" ", "")
-                    address_match = re.search(r"(\D+)(\d{5}.*)", formatted_address)
-                    if address_match:
-                        alpha_part = address_match.group(1)
-                        numeric_part = address_match.group(2)
-                        if len(alpha_part) > 2:
-                            alpha_part = alpha_part[:-2] + ' ' + alpha_part[-2:]
-                        extracted_details["addressline2"] = alpha_part + " " + numeric_part
-                else:
-                    extracted_details["addressline1"] = address_lines[0]
+                extracted_details["addressline1"] = address_lines[0]
+                print(f"Name and Address Extracted: {extracted_details}")
 
             return extracted_details
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Error during name extraction: {e}")
         return None

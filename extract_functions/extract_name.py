@@ -12,6 +12,7 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
                 "addressline2": ""
             }
 
+            # Access the first page and define the extraction region (bottom-left)
             page = pdf.pages[0]
             page_width = page.width
             page_height = page.height
@@ -23,12 +24,16 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
                 print("No text found in the bottom-left corner.")
                 return extracted_details
 
+            # Split the extracted text into lines
             lines = cropped_text.split("\n")
             name_found = False
             address_lines = []
+
+            # Step 1: Parse name and address from the text
             for line in lines:
                 line = line.strip()
                 if not name_found:
+                    # Match name pattern (first, middle, last)
                     name_pattern = r"([A-Z]+)\s([A-Z]+)(?:\s([A-Z]+))?"
                     name_match = re.match(name_pattern, line)
                     if name_match:
@@ -37,15 +42,44 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
                         extracted_details["lastname"] = name_match.group(3) if name_match.group(3) else ""
                         name_found = True
                         continue
-
-                if name_found:
+                
+                # Append remaining lines as potential address lines
+                if name_found and line:
                     address_lines.append(line)
 
-            if address_lines:
+            # Step 2: Assign address lines
+            if len(address_lines) > 0:
                 extracted_details["addressline1"] = address_lines[0]
-                print(f"Name and Address Extracted: {extracted_details}")
+            
+            if len(address_lines) > 1:
+                raw_addressline2 = address_lines[1]
+                
+                # Step 3: Remove all spaces from the address
+                cleaned_addressline2 = re.sub(r'\s+', '', raw_addressline2)
+                
+                # Step 4: Locate the first number (ZIP code start) and insert space before it
+                zip_match = re.search(r"\d", cleaned_addressline2)
+                
+                if zip_match:
+                    zip_index = zip_match.start()
+                    # Insert space before the ZIP code
+                    formatted_addressline2 = cleaned_addressline2[:zip_index] + " " + cleaned_addressline2[zip_index:]
 
+                    # Step 5: Insert additional space 2 characters before the ZIP
+                    if zip_index > 2:
+                        formatted_addressline2 = (
+                            formatted_addressline2[:zip_index - 2] + " " + formatted_addressline2[zip_index - 2:]
+                        )
+                    
+                    extracted_details["addressline2"] = formatted_addressline2
+                else:
+                    # If no ZIP code is found, fallback to cleaned address without modifications
+                    extracted_details["addressline2"] = cleaned_addressline2
+
+            # Print extracted details (for testing/debugging)
+            print(f"Name and Address Extracted: {extracted_details}")
             return extracted_details
+
     except Exception as e:
         print(f"Error during name extraction: {e}")
         return None

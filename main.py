@@ -7,7 +7,7 @@ from extract_functions.extract_billing_cycle import calculate_billing_cycle_from
 
 def main():
     # Define the PDF file path
-    pdf_path = "pdf_files/WellsFargo2.pdf"
+    pdf_path = "pdf_files/WellsFargo1.pdf"
     debug_mode = True  # Enable debugging
 
     # Step 1: Extract name and address

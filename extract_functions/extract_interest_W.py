@@ -2,7 +2,7 @@ import pdfplumber
 import re
 
 # Function to extract interest charge and cash advance details from the PDF
-def extract_interest_and_cash_advance_from_pdf(pdf_path, debug=False):
+def extract_interest_from_Wpdf(pdf_path, debug=False):
     try:
         details = []
         interest_pattern = r"(PURCHASES|CASH ADVANCES)\s+(\d+\.\d+)%\s+\$([\d,]+\.\d{2})\s+(\d+)\s+\$([\d,]+\.\d{2})\s+\$([\d,]+\.\d{2})"
@@ -14,7 +14,7 @@ def extract_interest_and_cash_advance_from_pdf(pdf_path, debug=False):
                 
                 if debug:
                     print(f"\n--- Extracted Text from Page {page_num + 1} ---\n")
-                    print(text)
+                    print(text) 
                 
                 # Extract rows matching the interest pattern
                 matches = re.findall(interest_pattern, text)

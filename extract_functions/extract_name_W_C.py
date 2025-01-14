@@ -1,7 +1,7 @@
 import pdfplumber
 import re
 
-def extract_name_and_address_from_pdf(pdf_path, debug=False):
+def extract_name_and_address_from_WCpdf(pdf_path, debug=False):
     try:
         with pdfplumber.open(pdf_path) as pdf:
             extracted_details = {
@@ -16,7 +16,7 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
             page = pdf.pages[0]
             page_width = page.width
             page_height = page.height
-            bottom_left_bbox = (0, page_height * 0.7, page_width * 0.4, page_height)
+            bottom_left_bbox = (0, page_height * 0.8, page_width * 0.4, page_height)
 
             cropped_text = page.within_bbox(bottom_left_bbox).extract_text()
 
@@ -33,13 +33,18 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
             for line in lines:
                 line = line.strip()
                 if not name_found:
-                    # Match name pattern (first, middle, last)
-                    name_pattern = r"([A-Z]+)\s([A-Z]+)(?:\s([A-Z]+))?"
+                    # Match name pattern (first, optional middle, last)
+                    name_pattern = r"([A-Z]+)\s([A-Z]+)(?:\s([A-Z]+))?$"
                     name_match = re.match(name_pattern, line)
+                    
                     if name_match:
                         extracted_details["firstname"] = name_match.group(1)
-                        extracted_details["middlename"] = name_match.group(2) if name_match.group(2) else ""
-                        extracted_details["lastname"] = name_match.group(3) if name_match.group(3) else ""
+                        if name_match.group(3):  # If a third match exists, it's the last name
+                            extracted_details["middlename"] = name_match.group(2)
+                            extracted_details["lastname"] = name_match.group(3)
+                        else:
+                            extracted_details["lastname"] = name_match.group(2)
+                        
                         name_found = True
                         continue
                 
@@ -62,10 +67,9 @@ def extract_name_and_address_from_pdf(pdf_path, debug=False):
                 
                 if zip_match:
                     zip_index = zip_match.start()
-                    # Insert space before the ZIP code
                     formatted_addressline2 = cleaned_addressline2[:zip_index] + " " + cleaned_addressline2[zip_index:]
-
-                    # Step 5: Insert additional space 2 characters before the ZIP
+                    
+                    # Add extra space 2 characters before the ZIP code
                     if zip_index > 2:
                         formatted_addressline2 = (
                             formatted_addressline2[:zip_index - 2] + " " + formatted_addressline2[zip_index - 2:]

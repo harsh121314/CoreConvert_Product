@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 # Function to extract transactions from the PDF
-def extract_transactions_from_pdf(pdf_path, debug=False):
+def extract_transactions_from_Wpdf(pdf_path, debug=False):
     try:
         transactions = []
         current_year = datetime.now().year

@@ -1,8 +1,8 @@
 import pdfplumber
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
-def extract_payment_and_additional_details_from_pdf(pdf_path, debug=False):
+def extract_payment_and_additional_details_from_Wpdf(pdf_path, debug=False):
     try:
         with pdfplumber.open(pdf_path) as pdf:
             payment_details = {
@@ -18,7 +18,8 @@ def extract_payment_and_additional_details_from_pdf(pdf_path, debug=False):
                 "amountfeechargesctd": None,
                 "amountofinterestctd": None,
                 "creditlimit": None,
-                "opentobuy": None
+                "opentobuy": None,
+                "billingcycle": None
             }
 
             # Define regex patterns for extracting payment details
@@ -58,14 +59,25 @@ def extract_payment_and_additional_details_from_pdf(pdf_path, debug=False):
 
                             # Store payment due date directly
                             if key == "paymentduedate":
-                                payment_details[key] = match.group(1)
+                                date_obj = datetime.strptime(match.group(1), "%m/%d/%Y")
+                                # Change the month to January
+                                january_date = date_obj.replace(month=1)
+                                payment_details[key] = january_date.strftime("%Y-%m-%d")
+
+                                # Calculate billing cycle
+                                adjusted_date = january_date + timedelta(days=6)
+                                billing_day = adjusted_date.day
+                                payment_details["billingcycle"] = f"{billing_day:02d}"
+
                                 if debug:
                                     print(f"{key} Found: {payment_details[key]}")
+                                    print(f"billingcycle Found: {payment_details['billingcycle']}")
 
                             # Extract last statement date
                             elif key == "laststatementdate":
                                 end_date = match.group(2)
-                                payment_details[key] = end_date
+                                date_obj = datetime.strptime(end_date, "%m/%d/%Y")
+                                payment_details[key] = date_obj.strftime("%Y-%m-%d")
                                 if debug:
                                     print(f"{key} Found: {payment_details[key]}")
 
